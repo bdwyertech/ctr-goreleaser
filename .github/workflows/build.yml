@@ -73,6 +73,7 @@ jobs:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
         with:
+          # skopeo copy docker://tonistiigi/binfmt:latest docker://ghcr.io/bdwyertech/dhub/binfmt:latest --multi-arch all
           image: ghcr.io/bdwyertech/dhub/binfmt:latest
 
       - name: Set up Docker Buildx
