@@ -1,0 +1,14 @@
+FROM ghcr.io/sigstore/cosign/cosign:v3.0.4 AS cosign-bin
+FROM  ghcr.io/anchore/syft:v1.41.1 AS syft-bin
+FROM ghcr.io/goreleaser/goreleaser:v2.14.0 AS goreleaser-bin
+
+FROM golang:1.25-alpine
+
+COPY --from=cosign-bin /ko-app/cosign /usr/local/bin/cosign
+COPY --from=syft-bin /syft /usr/local/bin/syft
+COPY --from=goreleaser-bin /usr/bin/goreleaser /usr/local/bin/goreleaser
+
+
+COPY scripts/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
