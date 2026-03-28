@@ -1,6 +1,6 @@
 ARG DOCKER_TAG="1.25"
 
-FROM ghcr.io/sigstore/cosign/cosign:v3.0.4 AS cosign-bin
+FROM ghcr.io/sigstore/cosign/cosign:v3.0.5 AS cosign-bin
 FROM  ghcr.io/anchore/syft:v1.41.2 AS syft-bin
 FROM ghcr.io/goreleaser/goreleaser:v2.13.3 AS goreleaser-bin
 
