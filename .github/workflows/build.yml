@@ -75,7 +75,7 @@ jobs:
             type=raw,value=${{ matrix.tag }}
             type=sha,enable=true,priority=100,prefix=${{ matrix.tag }}-${{ steps.params.outputs.date }}--,suffix=,format=short
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@v4
         with:
           # skopeo copy docker://tonistiigi/binfmt:latest docker://ghcr.io/bdwyertech/dhub/binfmt:latest --multi-arch all
           image: ghcr.io/bdwyertech/dhub/binfmt:latest
